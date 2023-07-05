@@ -1,25 +1,26 @@
 using System;
 using System.Collections.Generic;
+using user_management_backend.Models;
 
 namespace user_management_backend.Repositories;
 public class UserRepository: Interfaces.Repositories.IUserRepository
 {
-    private List<Models.UserModel> users = new List<Models.UserModel>();
+    private List<User> users = new List<User>();
     private int _nextId = 1;
 
     public UserRepository()
     {
-        Add(new Models.UserModel { firstName= "John", lastName="Doe", email="johndoe@gmail.com"});
-        Add(new Models.UserModel { firstName= "Mia", lastName="Wong", email="miawong@gmail.com"});
-        Add(new Models.UserModel { firstName= "Jiang", lastName="Fei", email="jiangfei@gmail.com"});
+        Add(new User { firstName= "John", lastName="Doe", email="johndoe@gmail.com"});
+        Add(new User { firstName= "Mia", lastName="Wong", email="miawong@gmail.com"});
+        Add(new User { firstName= "Jiang", lastName="Fei", email="jiangfei@gmail.com"});
     }
 
-    public IEnumerable<Models.UserModel> GetAll()
+    public IEnumerable<User> ToList()
     {
         return users;
     }
 
-    public Models.UserModel Add(Models.UserModel user)
+    public User Add(User user)
     {
         if (user == null)
         {

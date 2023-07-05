@@ -1,6 +1,6 @@
 namespace user_management_backend.Models;
 
-public class UserModel
+public class User
 {
     public int Id { get; set; }
     
