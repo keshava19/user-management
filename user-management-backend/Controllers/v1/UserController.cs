@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace user_management_backend.Controllers;
+namespace user_management_backend.Controllers.v1;
 
 [ApiController]
 public class UsersController : ControllerBase
@@ -15,7 +15,7 @@ public class UsersController : ControllerBase
 
     private readonly ILogger<UsersController> _logger;
 
-    static readonly Models.IUserRepository repository = new Models.UserRepository();
+    static readonly Interfaces.Repositories.IUserRepository repository = new Repositories.UserRepository();
 
     public UsersController(ILogger<UsersController> logger)
     {
@@ -23,14 +23,14 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    [Route("api/users")]
+    [Route("api/v1/users")]
     public IEnumerable<Models.UserModel> GetAllUsers()
     {
         return repository.GetAll();
     }
 
     [HttpPost]
-    [Route("api/user")]
+    [Route("api/v1/user")]
     [Consumes("application/json")]
     public Models.UserModel PostUser(Models.UserModel item)
     {
